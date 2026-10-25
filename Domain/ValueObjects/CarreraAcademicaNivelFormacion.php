@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../Exceptions/InvalidCarreraAcademicaNivelFormacionException.php';
+require_once __DIR__ . '/../Enums/NivelFormacionEnum.php';
 
 final class CarreraAcademicaNivelFormacion
 {
@@ -10,11 +11,13 @@ final class CarreraAcademicaNivelFormacion
 
     public function __construct(string $value)
     {
-        $normalizedValue = trim($value);
+        $normalizedValue = strtoupper(trim($value));
 
         if ($normalizedValue === '') {
             throw InvalidCarreraAcademicaNivelFormacionException::becauseValueIsEmpty();
         }
+
+        NivelFormacionEnum::ensureIsValid($normalizedValue);
 
         $this->value = $normalizedValue;
     }
