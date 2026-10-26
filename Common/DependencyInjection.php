@@ -156,4 +156,63 @@ final class DependencyInjection
             self::getUserRepository()
         );
     }
+ // ==================== CARRERA ACADEMICA ====================
+
+    public static function getCarreraAcademicaRepository(): CarreraAcademicaMySQLRepository
+    {
+        ClassLoader::loadClass('CarreraAcademicaMySQLRepository');
+
+        return new CarreraAcademicaMySQLRepository(
+            self::getPdo()
+        );
+    }
+
+    public static function getCreateCarreraAcademicaUseCase(): CreateCarreraAcademicaUseCase
+    {
+        ClassLoader::loadClass('CreateCarreraAcademicaService');
+
+        return new CreateCarreraAcademicaService(
+            self::getCarreraAcademicaRepository()
+        );
+    }
+
+    public static function getGetCarreraAcademicaByIdUseCase(): GetCarreraAcademicaByIdUseCase
+    {
+        ClassLoader::loadClass('GetCarreraAcademicaByIdService');
+
+        return new GetCarreraAcademicaByIdService(
+            self::getCarreraAcademicaRepository()
+        );
+    }
+
+    public static function getGetAllCarrerasAcademicasUseCase(): GetAllCarrerasAcademicasUseCase
+    {
+        ClassLoader::loadClass('GetAllCarrerasAcademicasService');
+
+        return new GetAllCarrerasAcademicasService(
+            self::getCarreraAcademicaRepository()
+        );
+    }
+
+    public static function getUpdateCarreraAcademicaUseCase(): UpdateCarreraAcademicaUseCase
+    {
+        ClassLoader::loadClass('UpdateCarreraAcademicaService');
+        $repository = self::getCarreraAcademicaRepository();
+
+        return new UpdateCarreraAcademicaService(
+            $repository,
+            $repository
+        );
+    }
+
+    public static function getDeleteCarreraAcademicaUseCase(): DeleteCarreraAcademicaUseCase
+    {
+        ClassLoader::loadClass('DeleteCarreraAcademicaService');
+        $repository = self::getCarreraAcademicaRepository();
+
+        return new DeleteCarreraAcademicaService(
+            $repository,
+            $repository
+        );
+    }
 }
