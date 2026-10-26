@@ -13,6 +13,8 @@ require_once __DIR__ . '/../../../../Application/Services/Dto/Commands/DeleteCar
 require_once __DIR__ . '/../../../../Application/Services/Dto/Queries/GetCarreraAcademicaByIdQuery.php';
 require_once __DIR__ . '/../../../../Application/Services/Dto/Queries/GetAllCarrerasAcademicasQuery.php';
 require_once __DIR__ . '/../../../../Application/Services/Mappers/CarreraAcademicaApplicationMapper.php';
+require_once __DIR__ . '/../Presentation/View.php';
+require_once __DIR__ . '/../Presentation/Flash.php';
 
 final class CarreraAcademicaController
 {
@@ -42,12 +44,22 @@ final class CarreraAcademicaController
         $carreras = $this->getAllUseCase->execute($query);
         $data = CarreraAcademicaApplicationMapper::fromModelsToArray($carreras);
 
-        require __DIR__ . '/../Presentation/carreras_academicas/listar.php';
+        View::render('carreras_academicas/listar', [
+            'pageTitle' => 'Carreras Académicas',
+            'carreras'  => $data,
+            'message'   => Flash::message(),
+            'success'   => Flash::success(),
+        ]);
     }
 
     public function createForm(): void
     {
-        require __DIR__ . '/../Presentation/carreras_academicas/crear.php';
+        View::render('carreras_academicas/crear', [
+            'pageTitle' => 'Nueva Carrera Académica',
+            'message'   => Flash::message(),
+            'errors'    => Flash::errors(),
+            'old'       => Flash::old(),
+        ]);
     }
 
     public function store(): void
@@ -68,22 +80,35 @@ final class CarreraAcademicaController
             );
 
             $this->createUseCase->execute($command);
-            header('Location: ?controller=carrera&action=index');
-            exit;
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            require __DIR__ . '/../Presentation/carreras_academicas/crear.php';
+
+            Flash::setSuccess('Carrera académica registrada correctamente.');
+            View::redirect('carreras.index');
+        } catch (Throwable $e) {
+            Flash::setMessage($e->getMessage());
+            Flash::setOld($_POST);
+            View::redirect('carreras.create');
         }
     }
 
     public function editForm(): void
     {
-        $id = $_GET['id'] ?? '';
-        $query = new GetCarreraAcademicaByIdQuery($id);
-        $carrera = $this->getByIdUseCase->execute($query);
-        $data = CarreraAcademicaApplicationMapper::fromModelToArray($carrera);
+        try {
+            $id = $_GET['id'] ?? '';
+            $query = new GetCarreraAcademicaByIdQuery($id);
+            $carrera = $this->getByIdUseCase->execute($query);
+            $data = CarreraAcademicaApplicationMapper::fromModelToArray($carrera);
 
-        require __DIR__ . '/../Presentation/carreras_academicas/editar.php';
+            View::render('carreras_academicas/editar', [
+                'pageTitle' => 'Editar Carrera Académica',
+                'carrera'   => $data,
+                'message'   => Flash::message(),
+                'errors'    => Flash::errors(),
+                'old'       => Flash::old(),
+            ]);
+        } catch (Throwable $e) {
+            Flash::setMessage($e->getMessage());
+            View::redirect('carreras.index');
+        }
     }
 
     public function update(): void
@@ -105,21 +130,29 @@ final class CarreraAcademicaController
             );
 
             $this->updateUseCase->execute($command);
-            header('Location: ?controller=carrera&action=index');
+
+            Flash::setSuccess('Carrera académica actualizada correctamente.');
+            View::redirect('carreras.index');
+        } catch (Throwable $e) {
+            Flash::setMessage($e->getMessage());
+            Flash::setOld($_POST);
+            header('Location: ?route=carreras.edit&id=' . urlencode($_POST['id'] ?? ''));
             exit;
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            require __DIR__ . '/../Presentation/carreras_academicas/editar.php';
         }
     }
 
     public function delete(): void
     {
-        $id = $_GET['id'] ?? '';
-        $command = new DeleteCarreraAcademicaCommand($id);
-        $this->deleteUseCase->execute($command);
+        try {
+            $id = $_POST['id'] ?? ($_GET['id'] ?? '');
+            $command = new DeleteCarreraAcademicaCommand($id);
+            $this->deleteUseCase->execute($command);
 
-        header('Location: ?controller=carrera&action=index');
-        exit;
+            Flash::setSuccess('Carrera académica eliminada correctamente.');
+        } catch (Throwable $e) {
+            Flash::setMessage($e->getMessage());
+        }
+
+        View::redirect('carreras.index');
     }
 }
