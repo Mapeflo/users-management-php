@@ -62,6 +62,32 @@ final class WebRoutes
                 'method' => 'POST',
                 'action' => 'forgot.send',
             ),
+            // ===== Carreras Académicas =====
+
+            'carreras.index' => array(
+                 'method' => 'GET',
+                 'action' => 'carreras.index',
+            ),
+            'carreras.create' => array(
+                 'method' => 'GET',
+                 'action' => 'carreras.create',
+            ),
+            'carreras.store' => array(
+                 'method' => 'POST',
+                 'action' => 'carreras.store',
+            ),
+            'carreras.edit' => array(
+                 'method' => 'GET',
+                 'action' => 'carreras.edit',
+            ),
+            'carreras.update' => array(
+                 'method' => 'POST',
+                 'action' => 'carreras.update',
+            ),
+            'carreras.delete' => array(
+                 'method' => 'POST',
+                 'action' => 'carreras.delete',
+            ),
         );
     }
 }

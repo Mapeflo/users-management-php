@@ -215,4 +215,16 @@ final class DependencyInjection
             $repository
         );
     }
+    public static function getCarreraAcademicaController(): CarreraAcademicaController
+    {
+        ClassLoader::loadClass('CarreraAcademicaController');
+
+        return new CarreraAcademicaController(
+            self::getCreateCarreraAcademicaUseCase(),
+            self::getGetCarreraAcademicaByIdUseCase(),
+            self::getGetAllCarrerasAcademicasUseCase(),
+            self::getUpdateCarreraAcademicaUseCase(),
+            self::getDeleteCarreraAcademicaUseCase()
+        );
+    }
 }
