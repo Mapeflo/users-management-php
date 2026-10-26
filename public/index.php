@@ -276,6 +276,37 @@ try {
             );
             View::redirect('auth.forgot');
             break;
+        // ==================== CARRERAS ACADÉMICAS ====================
+
+        case 'carreras.index':
+             $controller = DependencyInjection::getCarreraAcademicaController();
+             $controller->index();
+             break;
+
+        case 'carreras.create':
+             $controller = DependencyInjection::getCarreraAcademicaController();
+             $controller->createForm();
+             break;
+
+        case 'carreras.store':
+             $controller = DependencyInjection::getCarreraAcademicaController();
+             $controller->store();
+             break;
+
+        case 'carreras.edit':
+             $controller = DependencyInjection::getCarreraAcademicaController();
+             $controller->editForm();
+             break;
+
+        case 'carreras.update':
+             $controller = DependencyInjection::getCarreraAcademicaController();
+             $controller->update();
+             break;
+
+        case 'carreras.delete':
+             $controller = DependencyInjection::getCarreraAcademicaController();
+             $controller->delete();
+             break;
 
         default:
             throw new RuntimeException('Acción no soportada.');
