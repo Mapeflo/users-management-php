@@ -18,7 +18,7 @@
         <div class="error"><?= htmlspecialchars($error) ?></div>
     <?php endif; ?>
 
-    <form method="POST" action="?controller=carrera&action=update">
+    <form method="POST" action="?route=carreras.update">
         <input type="hidden" name="id" value="<?= htmlspecialchars($data['id'] ?? '') ?>">
 
         <label>Nombre</label>

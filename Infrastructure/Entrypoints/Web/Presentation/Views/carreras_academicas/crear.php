@@ -18,7 +18,7 @@
         <div class="error"><?= htmlspecialchars($error) ?></div>
     <?php endif; ?>
 
-    <form method="POST" action="?controller=carrera&action=store">
+    <form method="POST" action="?route=carreras.store">
         <label>Nombre</label>
         <input type="text" name="nombre" required>
 
