@@ -3,18 +3,18 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../Entity/CarreraAcademicaEntity.php';
-require_once __DIR__ . '/../../../../Domain/Models/CarreraAcademicaModel.php';
-require_once __DIR__ . '/../../../../Domain/ValueObjects/CarreraAcademicaId.php';
-require_once __DIR__ . '/../../../../Domain/ValueObjects/CarreraAcademicaNombre.php';
-require_once __DIR__ . '/../../../../Domain/ValueObjects/CarreraAcademicaNumCreditos.php';
-require_once __DIR__ . '/../../../../Domain/ValueObjects/CarreraAcademicaNumAsignaturas.php';
-require_once __DIR__ . '/../../../../Domain/ValueObjects/CarreraAcademicaNumSemestres.php';
-require_once __DIR__ . '/../../../../Domain/ValueObjects/CarreraAcademicaNivelFormacion.php';
-require_once __DIR__ . '/../../../../Domain/ValueObjects/CarreraAcademicaTitulo.php';
-require_once __DIR__ . '/../../../../Domain/ValueObjects/CarreraAcademicaValorSemestre.php';
-require_once __DIR__ . '/../../../../Domain/ValueObjects/CarreraAcademicaUniversidad.php';
-require_once __DIR__ . '/../../../../Domain/ValueObjects/CarreraAcademicaEsAcreditada.php';
-require_once __DIR__ . '/../../../../Domain/ValueObjects/CarreraAcademicaAreaConocimiento.php';
+require_once __DIR__ . '/../../../../../Domain/Models/CarreraAcademicaModel.php';
+require_once __DIR__ . '/../../../../../Domain/ValueObjects/CarreraAcademicaId.php';
+require_once __DIR__ . '/../../../../../Domain/ValueObjects/CarreraAcademicaNombre.php';
+require_once __DIR__ . '/../../../../../Domain/ValueObjects/CarreraAcademicaNumCreditos.php';
+require_once __DIR__ . '/../../../../../Domain/ValueObjects/CarreraAcademicaNumAsignaturas.php';
+require_once __DIR__ . '/../../../../../Domain/ValueObjects/CarreraAcademicaNumSemestres.php';
+require_once __DIR__ . '/../../../../../Domain/ValueObjects/CarreraAcademicaNivelFormacion.php';
+require_once __DIR__ . '/../../../../../Domain/ValueObjects/CarreraAcademicaTitulo.php';
+require_once __DIR__ . '/../../../../../Domain/ValueObjects/CarreraAcademicaValorSemestre.php';
+require_once __DIR__ . '/../../../../../Domain/ValueObjects/CarreraAcademicaUniversidad.php';
+require_once __DIR__ . '/../../../../../Domain/ValueObjects/CarreraAcademicaEsAcreditada.php';
+require_once __DIR__ . '/../../../../../Domain/ValueObjects/CarreraAcademicaAreaConocimiento.php';
 
 final class CarreraAcademicaMapper
 {
