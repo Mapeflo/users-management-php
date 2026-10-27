@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/../../../../Application/Ports/Out/SaveCarreraAcademicaPort.php';
-require_once __DIR__ . '/../../../../Application/Ports/Out/GetCarreraAcademicaByIdPort.php';
-require_once __DIR__ . '/../../../../Application/Ports/Out/GetAllCarrerasAcademicasPort.php';
-require_once __DIR__ . '/../../../../Application/Ports/Out/UpdateCarreraAcademicaPort.php';
-require_once __DIR__ . '/../../../../Application/Ports/Out/DeleteCarreraAcademicaPort.php';
+require_once __DIR__ . '/../../../../../Application/Ports/Out/SaveCarreraAcademicaPort.php';
+require_once __DIR__ . '/../../../../../Application/Ports/Out/GetCarreraAcademicaByIdPort.php';
+require_once __DIR__ . '/../../../../../Application/Ports/Out/GetAllCarrerasAcademicasPort.php';
+require_once __DIR__ . '/../../../../../Application/Ports/Out/UpdateCarreraAcademicaPort.php';
+require_once __DIR__ . '/../../../../../Application/Ports/Out/DeleteCarreraAcademicaPort.php';
 require_once __DIR__ . '/../Entity/CarreraAcademicaEntity.php';
 require_once __DIR__ . '/../Mapper/CarreraAcademicaMapper.php';
-require_once __DIR__ . '/../../../../Domain/Models/CarreraAcademicaModel.php';
-require_once __DIR__ . '/../../../../Domain/ValueObjects/CarreraAcademicaId.php';
+require_once __DIR__ . '/../../../../../Domain/Models/CarreraAcademicaModel.php';
+require_once __DIR__ . '/../../../../../Domain/ValueObjects/CarreraAcademicaId.php';
 
 final class CarreraAcademicaMySQLRepository implements
     SaveCarreraAcademicaPort,
