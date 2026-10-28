@@ -78,7 +78,23 @@ if ($httpMethod !== $definition['method']) {
 }
 
 // Protect all user management routes behind authentication.
-$publicActions = array('home', 'login', 'authenticate', 'logout', 'forgot', 'forgot.send', 'create', 'store');
+$publicActions = array(
+    'home',
+    'login',
+    'authenticate',
+    'logout',
+    'forgot',
+    'forgot.send',
+    'create',
+    'store',
+    // Temporalmente públicas para pruebas de Postman
+    'carreras.index',
+    'carreras.create',
+    'carreras.store',
+    'carreras.edit',
+    'carreras.update',
+    'carreras.delete'
+);
 if (!in_array($definition['action'], $publicActions, true) && !isLoggedIn()) {
     Flash::setMessage('Debes iniciar sesión para acceder a esta sección.');
     View::redirect('auth.login');
