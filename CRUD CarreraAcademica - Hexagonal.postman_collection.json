@@ -1,0 +1,227 @@
+{
+  "info": {
+    "_postman_id": "3451860e-6702-4a34-a478-50a4f2950536",
+    "name": "CRUD CarreraAcademica - Hexagonal",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59284602",
+    "_collection_link": "https://go.postman.co/collection/59284602-3451860e-6702-4a34-a478-50a4f2950536?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "1. Listar Carreras",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost/users-management-php/public/index.php?route=carreras.index",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "users-management-php",
+            "public",
+            "index.php"
+          ],
+          "query": [
+            {
+              "key": "route",
+              "value": "carreras.index"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Crear Carrera",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "nombre",
+              "value": "Ingenieria de Sistemas"
+            },
+            {
+              "key": "num_creditos",
+              "value": "160"
+            },
+            {
+              "key": "num_asignaturas",
+              "value": "48"
+            },
+            {
+              "key": "num_semestres",
+              "value": "10"
+            },
+            {
+              "key": "nivel_formacion",
+              "value": "PROFESIONAL"
+            },
+            {
+              "key": "titulo",
+              "value": "Ingeniero de Sistemas"
+            },
+            {
+              "key": "valor_semestre",
+              "value": "3200000"
+            },
+            {
+              "key": "universidad",
+              "value": "Universidad de Cartagena"
+            },
+            {
+              "key": "es_acreditada",
+              "value": "1"
+            },
+            {
+              "key": "perfiles",
+              "value": "Desarrollo de softawre"
+            },
+            {
+              "key": "area_conocimiento",
+              "value": "Ingenieria y Tecnologia"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost/users-management-php/public/index.php?route=carreras.store",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "users-management-php",
+            "public",
+            "index.php"
+          ],
+          "query": [
+            {
+              "key": "route",
+              "value": "carreras.store"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Actualizar Carrera",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "id",
+              "value": "ca_6ae25f8d256d73.74964405"
+            },
+            {
+              "key": "nombre",
+              "value": "Ingeniería de Sistemas Actualizada"
+            },
+            {
+              "key": "num_creditos",
+              "value": "165"
+            },
+            {
+              "key": "num_asignaturas",
+              "value": "50"
+            },
+            {
+              "key": "num_semestres",
+              "value": "10"
+            },
+            {
+              "key": "nivel_formacion",
+              "value": "PROFESIONAL"
+            },
+            {
+              "key": "titulo",
+              "value": "Ingeniero de Sistemas"
+            },
+            {
+              "key": "valor_semestre",
+              "value": "3500000"
+            },
+            {
+              "key": "universidad",
+              "value": "Universidad de Caratgena"
+            },
+            {
+              "key": "es_acreditada",
+              "value": "1"
+            },
+            {
+              "key": "perfiles",
+              "value": "Desarrollo y Arquitectura de Software"
+            },
+            {
+              "key": "area_conocimiento",
+              "value": "Ingeniería y Tecnología"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost/users-management-php/public/index.php?route=carreras.update",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "users-management-php",
+            "public",
+            "index.php"
+          ],
+          "query": [
+            {
+              "key": "route",
+              "value": "carreras.update"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Eliminar Carrera",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "id",
+              "value": "ca_6ae25f8d256d73.74964405"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost/users-management-php/public/index.php?route=carreras.delete",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "users-management-php",
+            "public",
+            "index.php"
+          ],
+          "query": [
+            {
+              "key": "route",
+              "value": "carreras.delete"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
