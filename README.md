@@ -1,25 +1,64 @@
-# CRUD Usuarios: Arquitectura Hexagonal con DDD y CQRS
+# Users Management PHP - Arquitectura Hexagonal + DDD + CQRS
 
-Aplicación web PHP para la gestión de usuarios: registro, listado, visualización, edición, eliminación, autenticación con sesión y recuperación de contraseña por correo.
+Aplicación web desarrollada en PHP para la gestión de **Usuarios** y **Carreras Académicas**, implementada con **Arquitectura Hexagonal**, **Domain-Driven Design (DDD)** y **CQRS**.
+
+**Estudiante:** María Alejandra Peñaranda Flórez  
+**Correo:** mpenarandaf@unicartagena.edu.co  
+**Caso asignado:** 23 - Carrera Académica  
+**Universidad de Cartagena** - Desarrollo Web - Unidad 2
+
+---
 
 ## Tecnologías
 
-- PHP 8.3
+- PHP 8.2+
 - MySQL
-- Apache mod_rewrite
+- Docker & Docker Compose
+- Arquitectura Hexagonal (Ports & Adapters)
+- Domain-Driven Design (DDD)
+- CQRS
+- GitHub Actions (CI)
+- Render (Despliegue en la nube)
+- Aiven (Base de datos en la nube)
 
 ---
 
 ## Funcionalidades
 
+### Usuarios
 - Crear, listar, ver, editar y eliminar usuarios
 - Autenticación con sesión (login / logout)
-- Recuperación de contraseña mediante contraseña temporal enviada por correo
-- Protección de rutas según estado de autenticación
-- Protección contra acceso directo a archivos y listado de directorios
-- Envía notificaciones a los usuarios vía Correo Electronico
+- Recuperación de contraseña
+
+### Carreras Académicas (Caso 23)
+- Crear, listar, editar y eliminar carreras académicas
+- Campos: nombre, número de créditos, número de asignaturas, número de semestres, nivel de formación, título, valor del semestre, universidad, si es acreditada, perfiles y área de conocimiento
 
 ---
+
+## Cómo ejecutar el proyecto
+
+### 1. Con Docker (recomendado)
+
+```bash
+docker-compose up --build
+
+Luego abre: http://localhost:8080
+
+### Localmente (XAMPP)
+-Clona el repositorio
+-Configura el archivo .env basándote en .env.example
+-Crea las tablas en MySQL
+-Accede a: http://localhost/users-management-php/public
+
+### Despliegue en producción:
+-URL de producción: https://users-management-php.onrender.com
+-Base de datos: Aiven MySQL
+-Auto-Deploy activado desde GitHub
+
+### Credenciales de prueba:
+-Correo: admin@crud.com
+-Contraseña: password
 
 ## Conceptos aplicados
 
@@ -62,29 +101,6 @@ Aplicación web PHP para la gestión de usuarios: registro, listado, visualizaci
 - PDO con Prepared Statements
 - Adapter Pattern
 
-### Entrypoints / Presentación
-- Enrutamiento por query string (`?route=`)
-- PRG (Post-Redirect-Get)
-- Flash Messages
-- Autenticación basada en sesiones
-- Web Mapper
-- Web DTOs (WebRequest / UserResponse)
-- `View::render` con `extract`
-- Security Guard (IIFE)
-
----
-
-### Patrones de diseño
-- Front Controller
-- Repository
-- Data Mapper
-- Factory Method
-- DTO
-- Strategy
-- Template Method
-- IIFE
-- PRG (Post-Redirect-Get)
-
 ### Principios SOLID
 - **SRP** — Single Responsibility Principle
 - **OCP** — Open/Closed Principle
@@ -93,24 +109,12 @@ Aplicación web PHP para la gestión de usuarios: registro, listado, visualizaci
 - **DIP** — Dependency Inversion Principle
 
 ### Principios de Clean Code
-- `declare(strict_types=1)` en todos los archivos
-- Clases `final`
-- Value Objects inmutables
-- Named Constructors
-- Fail-fast
-- Nombres autodocumentados
-- Separación estricta de capas
-- Sin fugas de abstracción
-- Fail-safe defaults (valores por defecto seguros)
+-declare(strict_types=1) en todos los archivos
+-Clases final
+-Value Objects inmutables
+-Named Constructors
+-Fail-fast
+-Separación estricta de capas
 
-### Configuración externalizada (12-Factor App: Factor III)
-- Variables de entorno separadas del código fuente
-- Credenciales en `.env` (ignorado por git), nunca en se debe publicar en el repo
-- `.env.example` como plantilla y documentación de ejemplo para el equipo
-- `EnvLoader` con responsabilidad única: leer el entorno
-- Las variables reales del servidor tienen prioridad sobre `.env` (environment-over-code)
 
-### Seguridad
-
-- Credenciales fuera del código fuente y del historial de git
 
