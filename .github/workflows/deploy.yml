@@ -1,0 +1,32 @@
+name: CI/CD - Users Management PHP
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: pdo, pdo_mysql
+
+      - name: Verify PHP syntax
+        run: |
+          find . -name "*.php" -not -path "./vendor/*" -print0 | xargs -0 -n1 php -l
+
+      - name: Check important files exist
+        run: |
+          test -f Dockerfile
+          test -f docker-compose.yml
+          test -f public/index.php
+          echo "Archivos principales verificados correctamente"
